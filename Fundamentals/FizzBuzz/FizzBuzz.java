@@ -10,7 +10,7 @@ public class FizzBuzz {
             return "Buzz";
         }
         else{
-            String x=Integer.toString( number);
+            String x=Integer.toString(number);
             return x;
         }
     }
