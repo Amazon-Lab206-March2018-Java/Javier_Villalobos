@@ -39,9 +39,6 @@ public class BankAccount {
 		System.out.println("Total savings balance: "+savingsBalance);
 		System.out.println("Total amount: "+totalAmountOfMoney);
 	}
-	
-	
-	
 	//Getters and Setters
 
 	public String getAccountNumber() {
