@@ -1,0 +1,4 @@
+<servlet-mapping>
+  <servlet-name>watermelon</servlet-name>
+  <url-pattern>/example</url-pattern>
+</servlet-mapping>
