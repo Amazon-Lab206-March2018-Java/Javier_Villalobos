@@ -1,9 +1,11 @@
-function rSigma(num){
-    if(num==0){
-        return 0;
+function rFibonacci(num){
+    var x=1;
+    if(num<=1){
+        return x;
     }
-    return num + rSigma(num-1);
+
+    return x + rFibonacci(num-1);
 }
 
 
-console.log(rSigma(5));
+console.log(rFibonacci(5));
