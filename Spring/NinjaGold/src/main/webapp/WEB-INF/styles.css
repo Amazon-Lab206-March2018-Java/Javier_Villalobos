@@ -1,0 +1,20 @@
+.thumbnail{
+    display: inline-block;
+    width: 300px;
+    text-align: center;
+    padding: 45px 15px;
+    margin: 20px
+}
+.alert{
+    height: 300px;
+    width: 90%;
+    overflow: scroll;
+    margin: 25px!important;
+}
+
+.red{
+	color:red;
+}
+.green{
+	color:green;
+}
