@@ -1,0 +1,8 @@
+label,textarea{
+    display: block;
+    margin: 10px;
+}
+
+.error{
+    color: red;
+}
