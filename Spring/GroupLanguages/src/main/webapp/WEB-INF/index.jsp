@@ -23,16 +23,18 @@
         <tbody>
            	<c:forEach var="language" items="${languages }">
 	            <tr>
-	                <td><a href="/languages/<c:out value="${ languages.indexOf(language) }"/>"> <c:out value="${ language.name }"/> </a> </td>
+	                <td><a href="/languages/<c:out value="${ language.id }"/>"> <c:out value="${ language.name }"/> </a> </td>
 	                <td><c:out value="${ language.creator }"/></td>
 	                <td><c:out value="${ language.version }"/></td>
-	                <td>	<a href="/languages/edit/<c:out value="${ languages.indexOf(language) }"/>" > Edit</a>  <a href="/languages/delete/<c:out value="${ languages.indexOf(language) }"/>" > Delete</a></td>
+	                <td>	<a href="/languages/edit/<c:out value="${ language.id }"/>" > Edit</a>  <a href="/languages/delete/<c:out value="${ language.id  }"/>" > Delete</a></td>
     	        </tr>
   	        </c:forEach>
         </tbody>
     </table>
     
     <form:form method="POST" action="/languages/new" modelAttribute="language">
+    	<form:hidden path="id" />
+    	
 	    <form:label path="name">Name
 	    <form:input path="name"/>
 	    <form:errors path="name"/></form:label>

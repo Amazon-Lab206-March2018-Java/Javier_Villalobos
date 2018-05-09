@@ -89,10 +89,12 @@ tree.add(10);
 tree.add(9);
 tree.add(11);
 tree.add(13);
+tree.add(13);
 tree.add(0);
 tree.add(1);
-tree.add(-11);
 tree.add(19);
+console.log(tree.size());
+
 // console.log(tree.min());
 // console.log(tree.max());
 // console.log(tree.isEmpty());

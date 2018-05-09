@@ -1,7 +1,9 @@
 package com.javier.grouplanguages.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -31,7 +33,7 @@ public class Controllers {
 	
 	@RequestMapping("/languages")
 	public String languages(@ModelAttribute("language") Language language, Model model) {
-		ArrayList<Language> languages = languageService.allLanguages();
+		List<Language> languages = languageService.allLanguages();
 		model.addAttribute("languages",languages);
 		return "index.jsp";
 	}
@@ -40,7 +42,6 @@ public class Controllers {
     @PostMapping("/languages/new")
     public String create(@Valid @ModelAttribute("language") Language language, BindingResult result) {
         if (result.hasErrors()) {
-        	
         	return "index.jsp";
         }else{
             languageService.addLanguage(language);
@@ -55,19 +56,26 @@ public class Controllers {
 	}
 	@RequestMapping("languages/edit/{id}")
 	public String editLanguageRender(@PathVariable String id, Model model, @ModelAttribute("language") Language language) {
-		model.addAttribute("currentLanguage",languageService.findLanguage(id));
-		return "edit.jsp";
+        Language language2 = languageService.findLanguage(id);
+        if(language != null){
+            model.addAttribute("currentLanguage", language2);
+            return "edit.jsp";
+        } else {
+            return "redirect:/";
+        }
 	}
-	
-    @PostMapping("languages/edit/{id}/submit")
-    public String editLanguage(@Valid @ModelAttribute("language") Language language, BindingResult result,@PathVariable String id) {
+	@Transactional
+    @PostMapping("languages/edit/{id}")
+    public String editLanguage(@Valid @ModelAttribute("language") Language language, BindingResult result,@PathVariable Long id) {
         if (result.hasErrors()) {
         	return "edit.jsp";
         }else{
-            languageService.updateLanguage(id, language);
+        	language.setId(id);
+            languageService.updateLanguage(language);
             return "redirect:/languages";
         }
     }
+    
 	@RequestMapping("languages/delete/{id}")
 	public String deleteLanguage(@PathVariable String id, Model model, @ModelAttribute("language") Language language) {
 		languageService.deleteLanguage(id);

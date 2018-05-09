@@ -13,11 +13,13 @@
 <body>
 	<a href="/languages/delete/${id}" > Delete</a><a href="/" > Dashboard</a> <br>
 
-    <form:form method="POST" action="/languages/edit/${id}/submit" modelAttribute="language">
+    <form:form method="POST" action="/languages/edit/${id}" modelAttribute="language">
+    	<form:hidden path="id" />
+    	
 	    <form:label path="name">Name
 	    <form:input path="name" value="${ currentLanguage.name }"/>
 	    <form:errors path="name"/></form:label>
-	    
+		
 	    <form:label path="creator">Creator
 	    <form:input path="creator" value="${ currentLanguage.creator }"/>
 	    <form:errors path="creator"/></form:label>
@@ -25,7 +27,8 @@
 	    <form:label path="version">Version
 	    <form:input path="version" value="${ currentLanguage.version }"/>
 	    <form:errors path="version"/></form:label>
-	        
+	    
+	    
 	    <input type="submit" value="Submit"/>
 	</form:form>
 

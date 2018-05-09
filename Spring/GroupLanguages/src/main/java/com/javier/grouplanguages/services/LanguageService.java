@@ -1,32 +1,45 @@
 package com.javier.grouplanguages.services;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.javier.grouplanguages.models.Language;
+import com.javier.grouplanguages.repositories.LanguageRepo;
 
 @Service
 public class LanguageService {
 
-	ArrayList<Language> languages = new ArrayList<Language>();
+	private LanguageRepo languageRepo;
+	public LanguageService(LanguageRepo languageRepo) {
+		this.languageRepo=languageRepo;
+	}
 	
 	public void addLanguage(Language language) {
-		languages.add(language);
+		languageRepo.save(language);
 	}
 	
-	public ArrayList<Language> allLanguages() {
-        return languages;
+	public List<Language> allLanguages(){
+        return (List<Language>) languageRepo.findAll();
     }
 	
-	public Language findLanguage(String index) {
-		return  languages.get(Integer.parseInt(index));
+	public Language findLanguage(String id) {
+        Optional<Language> optionalLanguage = languageRepo.findById(Long.parseLong(id));
+        if(optionalLanguage.isPresent()) {
+            return optionalLanguage.get();
+        } else {
+            return null;
+        }
 	}
 	
-	public void updateLanguage(String id, Language language) {
-		languages.set(Integer.parseInt(id), language);
+	public void updateLanguage(Language language) {
+		languageRepo.save(language);
 	}
 	public void deleteLanguage(String id) {
-		languages.remove(Integer.parseInt(id));
+		languageRepo.deleteById(Long.parseLong(id));
 	}
+	
+
 }
