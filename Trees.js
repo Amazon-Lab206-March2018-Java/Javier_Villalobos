@@ -78,6 +78,25 @@ function BST(){
         }
         return false;
     }
+
+    this.height=function(pointer = this.root){
+        var right=0,left=0;
+        if(!pointer){
+            return 0;
+        }
+        if(pointer.right){
+            right=1+this.height(pointer.right);
+        }
+        if(pointer.left){
+            left=1+this.height(pointer.left);
+        }
+        if(left>right){
+            return left;
+        }
+        else{
+            return right;
+        }
+    }
 }
 
 
@@ -86,14 +105,8 @@ tree.add(20);
 tree.add(12);
 tree.add(8);
 tree.add(10);
-tree.add(9);
-tree.add(11);
-tree.add(13);
-tree.add(13);
-tree.add(0);
-tree.add(1);
-tree.add(19);
-console.log(tree.size());
+
+console.log(tree.height());
 
 // console.log(tree.min());
 // console.log(tree.max());
