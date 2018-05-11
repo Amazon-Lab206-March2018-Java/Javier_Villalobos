@@ -106,10 +106,5 @@ tree.add(12);
 tree.add(8);
 tree.add(10);
 
-console.log(tree.height());
-
-// console.log(tree.min());
-// console.log(tree.max());
-// console.log(tree.isEmpty());
-// console.log(tree.contains(20));
+console.log()
 // console.log(tree);
