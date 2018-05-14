@@ -20,7 +20,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 //...
 @Entity
-@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
 @Table(name="licenses")
 public class License {
  

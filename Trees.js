@@ -99,6 +99,10 @@ function BST(){
     }
 }
 
+function arrayToBST(arr){
+    
+}
+
 
 var tree= new BST();
 tree.add(20);
