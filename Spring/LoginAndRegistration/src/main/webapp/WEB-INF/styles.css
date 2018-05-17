@@ -1,0 +1,12 @@
+*{
+  text-align: center;
+}
+
+span{
+	color:red;
+}
+
+header > * {
+	display: inline-block;
+	
+}
